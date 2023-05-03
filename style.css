@@ -1,10 +1,16 @@
 * {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     box-sizing: border-box;
     padding: none;
     border: none;
     padding: none;
 
-    background-color: rgb(44, 44, 44);
+    /* border: solid 1px grey; */
+    color: white;
+}
+
+body {
+    background-color: #ecf8f8;
 }
 
 main {
@@ -12,20 +18,45 @@ main {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .card-container {
-    width: 80%;
-    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .card {
-    width: 80%;
-    height: 80%;
-    background-color: rgba(0, 0, 0, 0.1);
+    height: auto;
+    display: grid;
+    grid-template-columns: 200px 500px 400px;
+    background-color: #000c24;
+}
+
+.mid-card {
+    width: 100%;
+}
+
+.poke-image {
+    width: 100%;
+}
+
+.poke-name {
+    font-size: 3rem;
+    font-weight: 800;
+    border: solid 1px rgb(255, 255, 255);
+
+}
+
+.poke-bar-holder {
+    width: 300px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.poke-bar {
+    background-color: rgb(255, 145, 0);
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%);
+    height: 100%;
 }
