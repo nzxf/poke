@@ -11,6 +11,10 @@
 
 body {
     background-color: #ecf8f8;
+    background-image: url("https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/masters/forest.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 main {
@@ -18,24 +22,40 @@ main {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 }
 
 .card-container {
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .card {
     height: auto;
     display: grid;
     grid-template-columns: 200px 500px 400px;
-    background-color: #000c24;
+    /* background-color: #000c24; */
+}
+
+.left-card,
+.right-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
 
 .mid-card {
     width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: end;
+    height: auto;
+}
+
+.poke-ability {
+    border-top: solid 1px white;
 }
 
 .poke-image {
@@ -43,20 +63,23 @@ main {
 }
 
 .poke-name {
-    font-size: 3rem;
+    font-size: xx-large;
     font-weight: 800;
-    border: solid 1px rgb(255, 255, 255);
+}
 
+.poke-stat {
+    margin: 10px 0 0 0;
 }
 
 .poke-bar-holder {
     width: 300px;
     height: 10px;
     background-color: rgba(255, 255, 255, 0.1);
+    margin: 10px 0 0 0;
 }
 
 .poke-bar {
     background-color: rgb(255, 145, 0);
-    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%);
+    background-image: linear-gradient(to right, #E35C41 0%, #EDA264 51%);
     height: 100%;
 }
