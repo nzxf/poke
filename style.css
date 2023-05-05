@@ -128,3 +128,20 @@ main {
 .poke-bar {
     height: 100%;
 }
+
+
+@media only screen and (max-width: 1000px) {
+    .card-container {
+        margin-top: 0;
+    }
+    
+    .card {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 80%;
+    }
+
+    .mid-card {
+        order: 1;
+    }
+}

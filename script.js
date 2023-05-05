@@ -124,10 +124,10 @@ const chooseOne = async (id = rand(920)) => {
         more.addEventListener('click', function() {
             if (pokeAbilityEffect.style.display === "none") {
             pokeAbilityEffect.style.display = "block"
-            more.textContent = "Less..."
+            more.textContent = "Less"
             } else {
             pokeAbilityEffect.style.display = "none"
-            more.textContent = "More..."
+            more.textContent = "More"
             }
         })
 
