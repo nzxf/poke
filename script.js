@@ -162,7 +162,7 @@ const chooseOne = async (id = rand(920)) => {
 
         const pokeTypeLogo = document.createElement('IMG')
         pokeTypeLogo.classList.add('poke-type-logo')
-        pokeTypeLogo.src = `/icons/${data.types[i].type.name}.svg`
+        pokeTypeLogo.src = `icons/${data.types[i].type.name}.svg`
         pokeType.insertBefore(pokeTypeLogo, pokeType.firstChild)
     }
 
