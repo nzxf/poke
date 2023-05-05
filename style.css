@@ -19,13 +19,10 @@ body {
 main {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .card-container {
-    height: 60%;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +31,7 @@ main {
 
 .card {
     display: grid;
-    grid-template-columns: 200px 500px auto;
+    grid-template-columns: 300px 500px auto;
     /* background-color: #000c24; */
 }
 
@@ -49,23 +46,25 @@ main {
 
 .mid-card {
     display: flex;
-    align-items: end;
-    height: auto;
+    align-items: start;
+    /* height: auto; */
+}
+
+.right-card {
+    max-height: 520px;
 }
 
 .poke-ability {
     font-weight: 600;
-    border-bottom: solid 1px rgba(255, 255, 255, .2);
-    padding-bottom: 5px;
-    margin: 0;
+    border-top: solid 1px rgba(255, 255, 255, .4);
+    margin-top: 0;
+    padding-top: 5px;
 }
 
-.poke-ability-effect {
-    margin: 3px 0 0 0;
-}
-
+.poke-ability-effect,
 .poke-ability-short-effect {
-    margin: 10px 0 30px 0;
+    font-weight: 400;
+    color: white;
 }
 
 .poke-image {
@@ -73,6 +72,7 @@ main {
 }
 
 .poke-type {
+    font-weight: 600;
     padding: 2px 5px;
     margin-right: 3px;
 }
@@ -95,7 +95,8 @@ main {
     border-right: 0;
 }
 
-.poke-stat {
+.poke-stat,
+.poke-xp {
     margin: 20px 0 5px 0;
 }
 
@@ -106,6 +107,5 @@ main {
 }
 
 .poke-bar {
-    background-image: linear-gradient(to right, #E35C41 0%, #EDA264 51%);
     height: 100%;
 }

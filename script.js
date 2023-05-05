@@ -1,23 +1,45 @@
 // give colors based on type
 const colors = {
-	normal: '#A8A77A',
-	fire: '#EE8130',
-	water: '#6390F0',
-	electric: '#F7D02C',
-	grass: '#7AC74C',
-	ice: '#96D9D6',
-	fighting: '#C22E28',
-	poison: '#A33EA1',
-	ground: '#E2BF65',
-	flying: '#A98FF3',
-	psychic: '#F95587',
-	bug: '#A6B91A',
-	rock: '#B6A136',
-	ghost: '#735797',
-	dragon: '#6F35FC',
-	dark: '#705746',
-	steel: '#B7B7CE',
-	fairy: '#D685AD',
+    normal: '#A8A77A',
+    fire: '#EE8130',
+    water: '#6390F0',
+    electric: '#F7D02C',
+    grass: '#7AC74C',
+    ice: '#96D9D6',
+    fighting: '#C22E28',
+    poison: '#A33EA1',
+    ground: '#E2BF65',
+    flying: '#A98FF3',
+    psychic: '#F95587',
+    bug: '#A6B91A',
+    rock: '#B6A136',
+    ghost: '#735797',
+    dragon: '#6F35FC',
+    dark: '#705746',
+    steel: '#B7B7CE',
+    fairy: '#D685AD',
+};
+
+// lighter colors
+const lightColors = {
+    normal: '#dcdcca',
+    fire: '#f8cdac',
+    water: '#c1d3f9',
+    electric: '#fcecab',
+    grass: '#cae9b7',
+    ice: '#d5f0ef',
+    fighting: '#eca6a3',
+    poison: '#e0acdf',
+    ground: '#f3e5c1',
+    flying: '#ddd2fa',
+    psychic: '#fdbbcf',
+    bug: '#e5f096',
+    rock: '#e6dcaa',
+    ghost: '#c7bad7',
+    dragon: '#c5aefe',
+    dark: '#cdbbae',
+    steel: '#e2e2eb',
+    fairy: '#efcede',
 };
 
 // give random number
@@ -26,14 +48,14 @@ const rand = max => Math.floor(Math.random() * max)
 // make number to #000 format
 const digity = function(num) {
     let x = ["#"]
-    for(let i = 4; i > num.toString().length; i--) {
+    for (let i = 4; i > num.toString().length; i--) {
         x.push(0)
     }
     return x.concat(num).join('')
 }
 
 // capitalize the first letter
-const upFirst = str => str[0].toUpperCase().concat(str.slice(1)); 
+const upFirst = str => str[0].toUpperCase().concat(str.slice(1));
 
 // PokeAPI = pokeData
 const pokeData = async (id) => {
@@ -73,21 +95,32 @@ const chooseOne = async (id = rand(152)) => {
     // Ability
     for (let i = 0; i < data.abilities.length; i++) {
         const dataAb = await pokeDataAb(data.abilities[i].ability.name)
-        
+
         const pokeAbility = document.createElement('P')
         pokeAbility.classList.add('poke-ability')
         pokeAbility.textContent = data.abilities[i].ability.name.toUpperCase()
+        pokeAbility.style.color = colors[data.types[0].type.name]
         leftCard.append(pokeAbility)
-        // Effect
-        const pokeAbilityEffect = document.createElement('P')
-        pokeAbilityEffect.classList.add('poke-ability-effect')
-        pokeAbilityEffect.textContent = dataAb.effect_entries[1].effect
-        leftCard.append(pokeAbilityEffect)
+
         // Short Effect
         const pokeAbilityShortEffect = document.createElement('P')
         pokeAbilityShortEffect.classList.add('poke-ability-short-effect')
         pokeAbilityShortEffect.textContent = dataAb.effect_entries[1].short_effect
-        leftCard.append(pokeAbilityShortEffect)
+        pokeAbility.append(pokeAbilityShortEffect)
+
+        // Effect
+        const pokeAbilityEffect = document.createElement('P')
+        pokeAbilityEffect.classList.add('poke-ability-effect')
+        pokeAbilityEffect.textContent = dataAb.effect_entries[1].effect
+        pokeAbilityEffect.style.display = "none"
+        pokeAbility.append(pokeAbilityEffect)
+
+        pokeAbility.addEventListener("mouseenter", function() {
+            pokeAbilityEffect.style.display = "block"
+        })
+        pokeAbility.addEventListener("mouseleave", function() {
+            pokeAbilityEffect.style.display = "none"
+        })
     }
 
     // Card: middle
@@ -136,7 +169,7 @@ const chooseOne = async (id = rand(152)) => {
     descContainer.append(pokeHeight)
     const pokeWeight = document.createElement('SPAN')
     pokeWeight.classList.add('poke-weight')
-    pokeWeight.textContent = `${data.weight/10} kg`
+    pokeWeight.textContent = `${data.weight / 10} kg`
     descContainer.append(pokeWeight)
     const pokeRegion = document.createElement('SPAN')
     pokeRegion.classList.add('poke-region')
@@ -156,6 +189,7 @@ const chooseOne = async (id = rand(152)) => {
 
         const pokeBar = document.createElement('DIV')
         pokeBar.classList.add('poke-bar')
+        pokeBar.style.backgroundImage = "linear-gradient(to right, " + colors[data.types[0].type.name] + " 0%, " + lightColors[data.types[0].type.name] + " 51%)"
         pokeBar.style.width = `${(data.stats[i].base_stat / 300) * 100}%`
         pokeBarHolder.append(pokeBar)
     }
@@ -173,8 +207,11 @@ const chooseOne = async (id = rand(152)) => {
 
     const pokeBarXp = document.createElement('DIV')
     pokeBarXp.classList.add('poke-bar')
+    pokeBarXp.style.backgroundImage = "linear-gradient(to right, " + lightColors[data.types[0].type.name] + " 0%, " + colors[data.types[0].type.name] + " 50%)"
     pokeBarXp.style.width = `${(data.base_experience / 400) * 100}%`
     pokeBarHolderXp.append(pokeBarXp)
 }
 
 chooseOne();
+
+
