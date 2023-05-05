@@ -79,7 +79,7 @@ const pokeDataAb = async (ability) => {
 
 const cardContainer = document.querySelector('.card-container')
 
-const chooseOne = async (id = rand(152)) => {
+const chooseOne = async (id = rand(920)) => {
     const data = await pokeData(id)
 
     // Card
@@ -108,19 +108,29 @@ const chooseOne = async (id = rand(152)) => {
         pokeAbilityShortEffect.textContent = dataAb.effect_entries[1].short_effect
         pokeAbility.append(pokeAbilityShortEffect)
 
+        // More button = show effect
+        const more = document.createElement('BUTTON')
+        more.classList.add('more-button')
+        more.textContent = "More..."
+        pokeAbility.append(more)
+
         // Effect
         const pokeAbilityEffect = document.createElement('P')
         pokeAbilityEffect.classList.add('poke-ability-effect')
         pokeAbilityEffect.textContent = dataAb.effect_entries[1].effect
         pokeAbilityEffect.style.display = "none"
-        pokeAbility.append(pokeAbilityEffect)
+        pokeAbility.insertBefore(pokeAbilityEffect, more)
 
-        pokeAbility.addEventListener("mouseenter", function() {
+        more.addEventListener('click', function() {
+            if (pokeAbilityEffect.style.display === "none") {
             pokeAbilityEffect.style.display = "block"
-        })
-        pokeAbility.addEventListener("mouseleave", function() {
+            more.textContent = "Less..."
+            } else {
             pokeAbilityEffect.style.display = "none"
+            more.textContent = "More..."
+            }
         })
+
     }
 
     // Card: middle
@@ -148,7 +158,14 @@ const chooseOne = async (id = rand(152)) => {
         pokeType.textContent = upFirst(data.types[i].type.name)
         pokeType.style.backgroundColor = colors[data.types[i].type.name]
         typeContainer.append(pokeType)
+
+
+        const pokeTypeLogo = document.createElement('IMG')
+        pokeTypeLogo.classList.add('poke-type-logo')
+        pokeTypeLogo.src = `/icons/${data.types[i].type.name}.svg`
+        pokeType.insertBefore(pokeTypeLogo, pokeType.firstChild)
     }
+
     // Name
     const pokeName = document.createElement('P')
     pokeName.classList.add('poke-name')
@@ -171,10 +188,6 @@ const chooseOne = async (id = rand(152)) => {
     pokeWeight.classList.add('poke-weight')
     pokeWeight.textContent = `${data.weight / 10} kg`
     descContainer.append(pokeWeight)
-    const pokeRegion = document.createElement('SPAN')
-    pokeRegion.classList.add('poke-region')
-    pokeRegion.textContent = "Kanto Region"
-    descContainer.append(pokeRegion)
 
     // Stats (hp, att, def, spc-att, spc-def, speed)
     for (let i = 0; i < data.stats.length; i++) {
