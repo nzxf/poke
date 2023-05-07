@@ -40,7 +40,13 @@ main {
     flex-direction: column;
 
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
     padding: 30px 15px;
+}
+
+.left-card {
+    max-height: 520px;
+    overflow: scroll;
 }
 
 .mid-card {
@@ -139,6 +145,10 @@ main {
         display: flex;
         flex-direction: column-reverse;
         width: 80%;
+    }
+
+    .left-card {
+        max-height: none;
     }
 
     .mid-card {
